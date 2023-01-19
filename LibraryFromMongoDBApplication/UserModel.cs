@@ -31,6 +31,4 @@ namespace LibraryFromMongoDBApplication
                 Id, Name, Surname, NationalIdentificationNumber, Address, Username, Password, IsApproved, IsBanned, IsLibrarian, BorrowedBooks != null ? BorrowedBooks.ToString() : "");
         }
     }
-
-    
 }
