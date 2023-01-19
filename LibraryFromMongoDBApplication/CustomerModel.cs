@@ -22,5 +22,6 @@ namespace LibraryFromMongoDBApplication
         public string Password { get; set; }
         public bool IsApproved { get; set; }
         public bool IsBanned { get; set; }
+        public BorrowedBookModel[] BorrowedBooks { get; set; }
     }
 }
