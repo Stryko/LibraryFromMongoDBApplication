@@ -21,6 +21,11 @@ foreach (var book in bookResults.ToList())
     Console.WriteLine(book.ToString());
 }
 
+foreach (var user in userResults.ToList())
+{
+    Console.WriteLine(user.ToString());
+}
+
 var newBook0 = new BookModel { Title = "Kniha 1", Author = "David Junak", NumberOfCopies = 5, CoverImage = "", NumberOfPages = 50, YearOfPublication = 2010, NumberOfAvailableCopies = 5 };
 var newBook1 = new BookModel { Title = "Kniha nieco", Author = "Adam Master", NumberOfCopies = 1, CoverImage = "", NumberOfPages = 500, YearOfPublication = 2020, NumberOfAvailableCopies = 1 };
 var newBook2 = new BookModel { Title = "Nova kniha", Author = "Rantok Bistric", NumberOfCopies = 5, CoverImage = "", NumberOfPages = 20, YearOfPublication = 2022, NumberOfAvailableCopies = 5 };
