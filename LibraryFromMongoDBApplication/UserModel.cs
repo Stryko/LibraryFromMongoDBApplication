@@ -9,7 +9,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace LibraryFromMongoDBApplication
 {
-    public class CustomerModel
+    public class UserModel
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -22,6 +22,7 @@ namespace LibraryFromMongoDBApplication
         public string Password { get; set; }
         public bool IsApproved { get; set; }
         public bool IsBanned { get; set; }
+        public bool IsLibrarian { get; set; }
         public BorrowedBookModel[] BorrowedBooks { get; set; }
     }
 }

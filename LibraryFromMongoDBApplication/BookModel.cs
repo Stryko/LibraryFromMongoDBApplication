@@ -20,5 +20,12 @@ namespace LibraryFromMongoDBApplication
         public int NumberOfPages { get; set; }
         public string CoverImage { get; set; }
         public int NumberOfCopies { get; set; }
+        public int NumberOfAvailableCopies { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("Id: {0}, Title: {1}, Author: {2}, YearOfPublication: {3}, NumberOfPages: {4}, CoverImage: {5}, NumberOfCopies: {6}",
+                Id, Title, Author, YearOfPublication, NumberOfCopies, CoverImage, NumberOfCopies);
+        }
     }
 }
