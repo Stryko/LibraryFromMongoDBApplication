@@ -1,6 +1,12 @@
 ﻿using MongoDB.Driver;
 using LibraryFromMongoDBApplication;
 
+DatabaseHandler dbHandler = new DatabaseHandler();
+List<BookModel> booksList = await dbHandler.GetBooks();
+List<UserModel> usersList = await dbHandler.GetUsers();
+
+UserModel loggedUser = await dbHandler.TryLoginUser("admin","admin");
+
 
 string connectionString = "mongodb+srv://stryko:KysuckyDeveloper963@library.h3gozkg.mongodb.net/?retryWrites=true&w=majority";
 string databaseName = "Library";
@@ -42,12 +48,16 @@ await booksCollection.InsertOneAsync(newBook4);
 await booksCollection.InsertOneAsync(newBook5);
 */
 
-var borroved = new BorrowedBookModel[] { new BorrowedBookModel { IdBook = "", DTFrom = DateTime.Now, IsReturned = false } };
+var borroved = new List<BorrowedBookModel> { new BorrowedBookModel { IdBook = "", DTFrom = DateTime.Now, IsReturned = false } };
 
-var customer = new UserModel { Name = "David", Surname = "Paradny", Address = "Aloise Rasina 336/Olomouc", IsBanned = false, IsApproved = true, Username = "stryko", Password = "stryko", NationalIdentificationNumber = "161dsad", IsLibrarian = false, BorrowedBooks = borroved };
-var customer1 = new UserModel { Name = "Lukas", Surname = "Master", Address = "Neznama 5166/Olomouc", IsBanned = false, IsApproved = true, Username = "rantok", Password = "rantok", NationalIdentificationNumber = "1688dsad", IsLibrarian = false };
-var customer2 = new UserModel { Name = "Adam", Surname = "Natural", Address = "Ulica 555/Olomouc", IsBanned = false, IsApproved = true, Username = "natural", Password = "natural", NationalIdentificationNumber = "dsa145", IsLibrarian = false };
-var librarian = new UserModel { Name = "Peter", Surname = "Zamestnany", Address = "Nova 779/Olomouc", IsBanned = false, IsApproved = true, Username = "admin", Password = "admin", NationalIdentificationNumber = "d16sa1d", IsLibrarian = true };
+var address1 = new AddressModel { Address = "Aloise Rasina 565", City = "Olomouc", PostalNumber = "77900", State = "Czech republic" };
+var address2 = new AddressModel { Address = "Zilinska 25", City = "Zilina", PostalNumber = "02440", State = "Slovak republic" };
+var address3 = new AddressModel { Address = "Zlinska 111", City = "Zlin", PostalNumber = "1566", State = "Czech republic" };
+
+var customer = new UserModel { Name = "David", Surname = "Paradny", Address = address1, IsBanned = false, IsApproved = true, Username = "stryko", Password = "stryko", NationalIdentificationNumber = "161dsad", IsLibrarian = false, BorrowedBooks = borroved };
+var customer1 = new UserModel { Name = "Lukas", Surname = "Master", Address = address2, IsBanned = false, IsApproved = true, Username = "rantok", Password = "rantok", NationalIdentificationNumber = "1688dsad", IsLibrarian = false };
+var customer2 = new UserModel { Name = "Adam", Surname = "Natural", Address = address2, IsBanned = false, IsApproved = true, Username = "natural", Password = "natural", NationalIdentificationNumber = "dsa145", IsLibrarian = false };
+var librarian = new UserModel { Name = "Peter", Surname = "Zamestnany", Address = address3, IsBanned = false, IsApproved = true, Username = "admin", Password = "admin", NationalIdentificationNumber = "d16sa1d", IsLibrarian = true };
 
 /*
 await usersCollection.InsertOneAsync(customer);
